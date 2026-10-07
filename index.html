@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CKA Motos | Oficina de motos</title>
+<meta name="description" content="Oficina de motos com revisão, mecânica, elétrica e freios. Orçamento claro antes de começar.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+:root{--bg:#070607;--bg2:#0e0c0d;--ink:#f1eeee;--mute:#948d8e;--line:#2a2425;--red:#d4202f;--pill:#e4e1e1;--pill-ink:#111;
+--sans:'Inter Tight','Helvetica Neue',Arial,sans-serif;--serif:'Instrument Serif',Georgia,'Times New Roman',serif;
+color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:.005em}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.pill{display:inline-flex;align-items:center;justify-content:center;background:var(--pill);color:var(--pill-ink);font:600 15px var(--sans);padding:14px 26px;border-radius:999px;text-decoration:none;border:0;transition:transform .2s,background .2s}
+.pill:hover{transform:translateY(-2px);background:#fff}
+.pill.o{background:transparent;color:var(--ink);border:1px solid #4a4244}
+.pill.o:hover{background:#ffffff14}
+/* loader */
+#ld{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;transition:transform 1s cubic-bezier(.77,0,.18,1)}
+#ld.out{transform:translateY(-100%)}
+#ld div{text-align:center;font:600 20px var(--sans);letter-spacing:.3em}
+#ld i{display:block;height:1px;margin:16px auto 0;background:var(--ink);width:0;animation:ln 1.5s .2s forwards cubic-bezier(.6,0,.2,1)}
+@keyframes ln{to{width:120px}}
+/* header */
+header{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;mix-blend-mode:difference}
+.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:64px;padding:0 24px;font-size:13px;font-weight:500}
+.nav a{text-decoration:none;color:#fff}
+.nav .l a{margin-right:22px}.nav .r{text-align:right}
+.logo{font-weight:700;letter-spacing:.28em;font-size:14px}
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;padding:120px 0 56px}
+.glow{position:absolute;border-radius:50%;filter:blur(80px);will-change:transform}
+.g1{width:46vw;height:46vw;left:-8vw;top:6vh;background:radial-gradient(circle,#d4202f99,transparent 65%);animation:dr 14s ease-in-out infinite alternate}
+.g2{width:38vw;height:38vw;right:-6vw;top:20vh;background:radial-gradient(circle,#ffffff2e,transparent 65%);animation:dr 18s ease-in-out infinite alternate-reverse}
+@keyframes dr{to{transform:translate(8vw,6vh) scale(1.2)}}
+.wheel{position:absolute;right:-12vw;top:50%;width:min(78vw,760px);translate:0 -50%;opacity:.5;filter:blur(2.5px);animation:sp 40s linear infinite}
+@keyframes sp{to{rotate:360deg}}
+.hero .wrap{position:relative;z-index:2;width:100%}
+h1{font:600 clamp(46px,8.4vw,128px)/.95 var(--sans);letter-spacing:-.035em;margin:0 0 28px;max-width:11ch}
+h1 em{font-size:1.04em;letter-spacing:-.01em}
+.hero p{max-width:40ch;color:#c9c3c4;margin:0 0 28px;font-size:18px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.stats{display:flex;gap:44px;margin-top:44px;padding-top:22px;border-top:1px solid #ffffff22;max-width:560px}
+.stats b{display:block;font-weight:600;font-size:15px}.stats span{color:var(--mute);font-size:14px}
+/* sections */
+.sec{padding:130px 0}
+.lbl{font-size:13px;color:var(--mute);margin-bottom:22px}
+h2{font:600 clamp(36px,5.6vw,80px)/1 var(--sans);letter-spacing:-.03em;margin:0;text-transform:uppercase}
+h2 em{text-transform:none;font-size:1.06em;letter-spacing:0}
+.two{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:end}
+.two p{color:#c9c3c4;margin:0 0 20px}
+.lnk{font-size:14px;font-weight:600;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:3px}
+/* horizontal */
+.pin{height:380vh;position:relative}
+.stick{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.stick .wrap{width:100%;margin-bottom:30px}
+.track{display:flex;gap:3vw;padding:0 max(24px,calc((100vw - 1180px)/2 + 24px));will-change:transform}
+.sl{flex:0 0 min(80vw,640px);aspect-ratio:4/3.1;border-radius:6px;position:relative;overflow:hidden;padding:30px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(150deg,#1b1618,#0b090a);border:1px solid var(--line)}
+.sl::before{content:"";position:absolute;width:80%;aspect-ratio:1;right:-22%;bottom:-30%;border-radius:50%;background:radial-gradient(circle,var(--c,#d4202f66),transparent 66%);filter:blur(20px)}
+.sl svg{position:absolute;right:-8%;bottom:-14%;width:64%;opacity:.5}
+.sl small{font-size:13px;color:var(--mute);position:relative}
+.sl h3{font:600 clamp(30px,4.4vw,52px)/1 var(--sans);letter-spacing:-.03em;margin:0 0 10px;position:relative}
+.sl h3 em{font-size:1.06em}
+.sl p{margin:0;color:#c9c3c4;max-width:34ch;position:relative;font-size:16px}
+/* specs */
+.spec{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.spec ul{list-style:none;margin:30px 0 0;padding:0}
+.spec li{display:flex;justify-content:space-between;gap:18px;padding:17px 0;border-bottom:1px solid #ffffff2b;font-size:15px;font-weight:500}
+.spec li span{color:var(--mute)}
+.ph{aspect-ratio:4/5;border-radius:6px;background:radial-gradient(circle at 30% 20%,#d4202f55,transparent 55%),linear-gradient(160deg,#241d1f,#0a0809);border:1px solid var(--line);display:grid;place-items:center;overflow:hidden}
+.ph svg{width:70%;opacity:.55}
+/* giant */
+.giant{height:230vh;position:relative}
+.gs{position:sticky;top:0;height:100svh;display:grid;place-items:center;overflow:hidden;text-align:center}
+.gs::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,#d4202f40,transparent 60%)}
+.gt{position:relative;font:700 clamp(54px,15vw,230px)/.86 var(--sans);letter-spacing:-.05em;text-transform:uppercase;will-change:transform,opacity}
+.gt em{display:block;text-transform:none;font-size:.9em;letter-spacing:0;color:#ffffffd9}
+/* quote */
+.q{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:center}
+blockquote{margin:0;font:400 clamp(28px,3.8vw,50px)/1.12 var(--serif);font-style:italic}
+blockquote+p{color:var(--mute);margin-top:22px;font-size:15px}
+/* contact */
+.cta{text-align:left;border-top:1px solid var(--line)}
+.cta h2{margin-bottom:34px}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:80px;padding-top:34px;border-top:1px solid var(--line);font-size:15px}
+.cols b{display:block;font-size:13px;color:var(--mute);font-weight:500;margin-bottom:8px}
+.cols a{text-decoration:none}.cols a:hover{text-decoration:underline}
+footer{padding:26px 0 40px;color:var(--mute);font-size:13px}
+.rv{opacity:0;transform:translateY(26px);filter:blur(6px);transition:opacity .9s,transform .9s,filter .9s}.rv.in{opacity:1;transform:none;filter:none}
+@media (max-width:820px){.two,.spec,.q,.cols{grid-template-columns:1fr;gap:34px}.nav .l a:nth-child(n+2){display:none}.sec{padding:90px 0}.stats{gap:26px}.ph{aspect-ratio:4/3}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none;filter:none}#ld{display:none}}
+</style>
+</head>
+<body>
+<div id="ld"><div>CKA MOTOS<i></i></div></div>
+<header><div class="nav">
+  <div class="l"><a href="#servicos">Serviços</a><a href="#detalhes">Detalhes</a></div>
+  <a class="logo" href="#topo">CKA</a>
+  <div class="r"><a href="#contato">Orçamento</a></div>
+</div></header>
+
+<main id="topo">
+<section class="hero">
+  <div class="glow g1"></div><div class="glow g2"></div>
+  <svg class="wheel" viewBox="0 0 400 400" aria-hidden="true"><g fill="none" stroke="#ddd" stroke-width="3"><circle cx="200" cy="200" r="190"/><circle cx="200" cy="200" r="150" stroke-width="14" stroke="#999"/><circle cx="200" cy="200" r="46"/><circle cx="200" cy="200" r="16" stroke-width="8"/></g><g stroke="#ccc" stroke-width="3" id="sp"></g></svg>
+  <div class="wrap">
+    <h1 class="rv">Sua moto no <em>máximo</em></h1>
+    <p class="rv">Revisão, mecânica, elétrica e freios com orçamento claro antes de qualquer serviço.</p>
+    <div class="row rv"><a class="pill" href="https://wa.me/5585900000000?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento</a><a class="pill o" href="#servicos">Ver serviços</a></div>
+    <div class="stats rv"><div><b>Preço combinado</b><span>antes de começar</span></div><div><b>Peça trocada</b><span>você pode ver</span></div><div><b>Segunda a sábado</b><span>atendimento</span></div></div>
+  </div>
+</section>
+
+<section class="sec"><div class="wrap two">
+  <div><div class="lbl rv">A oficina</div><h2 class="rv">A união entre <em>mecânica</em> e cuidado</h2></div>
+  <div class="rv"><p>A CKA Motos trata cada moto como se fosse a nossa. Diagnóstico honesto, serviço bem feito e conversa direta com quem mexe na sua máquina.</p><p>Não trocamos o que não precisa trocar. Você aprova o valor, acompanha o serviço e retira a moto pronta.</p><a class="lnk" href="#contato">Falar com a oficina</a></div>
+</div></section>
+
+<div class="pin" id="servicos"><div class="stick">
+  <div class="wrap"><div class="lbl">Serviços</div><h2>O que a gente <em>faz</em></h2></div>
+  <div class="track" id="track">
+    <article class="sl"><small>Revisão</small><div><h3>Revisão <em>completa</em></h3><p>Motor, freios, suspensão, pneus, cabos e luzes. Você recebe a lista do que foi visto.</p></div><svg viewBox="0 0 200 200" fill="none" stroke="#fff" stroke-width="2"><circle cx="100" cy="100" r="90"/><circle cx="100" cy="100" r="60"/><circle cx="100" cy="100" r="12"/></svg></article>
+    <article class="sl" style="--c:#ffffff30"><small>Óleo</small><div><h3>Troca de <em>óleo</em></h3><p>Óleo certo para o seu motor, filtro novo e conferência de nível e vazamentos.</p></div><svg viewBox="0 0 200 200" fill="none" stroke="#fff" stroke-width="2"><path d="M100 14C100 14 40 90 40 130a60 60 0 0 0 120 0C160 90 100 14 100 14Z"/></svg></article>
+    <article class="sl"><small>Freios</small><div><h3>Freios e <em>suspensão</em></h3><p>Pastilhas, discos, fluido e regulagem. Garfo e amortecedores revisados.</p></div><svg viewBox="0 0 200 200" fill="none" stroke="#fff" stroke-width="2"><circle cx="100" cy="100" r="90"/><circle cx="100" cy="100" r="70" stroke-dasharray="6 8"/><circle cx="100" cy="100" r="22"/></svg></article>
+    <article class="sl" style="--c:#ffffff30"><small>Elétrica</small><div><h3>Parte <em>elétrica</em></h3><p>Bateria, carga, partida, luzes e chicote. Diagnóstico de falhas intermitentes.</p></div><svg viewBox="0 0 200 200" fill="none" stroke="#fff" stroke-width="2"><path d="M115 10 50 115h45l-10 75 65-105h-45Z"/></svg></article>
+    <article class="sl"><small>Motor</small><div><h3>Motor e <em>transmissão</em></h3><p>Kit relação, embreagem, válvulas e reparo de motor com peças de qualidade.</p></div><svg viewBox="0 0 200 200" fill="none" stroke="#fff" stroke-width="2"><circle cx="100" cy="100" r="34"/><circle cx="100" cy="100" r="70" stroke-dasharray="14 10"/><circle cx="100" cy="100" r="88"/></svg></article>
+  </div>
+</div></div>
+
+<section class="sec" id="detalhes"><div class="wrap spec">
+  <div><div class="lbl rv">Detalhes</div><h2 class="rv">Olhar além do <em>óbvio</em></h2>
+    <ul class="rv"><li>Freios <span>pastilha, disco e fluido</span></li><li>Pneus <span>desgaste e calibragem</span></li><li>Transmissão <span>corrente, coroa e pinhão</span></li><li>Elétrica <span>bateria, carga e luzes</span></li><li>Suspensão <span>garfo e amortecedor</span></li></ul>
+  </div>
+  <!-- TROCAR: colocar foto real da oficina no lugar deste painel -->
+  <div class="ph rv" role="img" aria-label="Espaço para foto da oficina"><svg viewBox="0 0 300 200" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="65" cy="140" r="42"/><circle cx="235" cy="140" r="42"/><path d="M65 140 110 70h60l65 70M110 70l-12-22h-26M170 70l20-26h30M110 70l45 70"/></svg></div>
+</div></section>
+
+<div class="giant" id="giant"><div class="gs"><div class="gt" id="gt">Precisão<em>em cada ajuste</em></div></div></div>
+
+<section class="sec"><div class="wrap q">
+  <!-- TROCAR: foto do dono ou da equipe -->
+  <div class="ph rv" style="aspect-ratio:4/5" role="img" aria-label="Espaço para foto da equipe"><svg viewBox="0 0 200 200" fill="none" stroke="#fff" stroke-width="3"><circle cx="100" cy="76" r="34"/><path d="M34 180c4-44 32-62 66-62s62 18 66 62"/></svg></div>
+  <div class="rv"><blockquote>“Cada parafuso, cada ajuste, é feito pensando em você voltar para a estrada com segurança.”</blockquote><p>Equipe CKA Motos</p></div>
+</div></section>
+
+<section class="sec cta" id="contato"><div class="wrap">
+  <h2 class="rv">Bora cuidar da sua <em>moto</em>?</h2>
+  <div class="row rv"><a class="pill" href="https://wa.me/5585900000000?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener">Chamar no WhatsApp</a><a class="pill o" href="https://www.instagram.com/cka_motos/" target="_blank" rel="noopener">Ver o Instagram</a></div>
+  <!-- TROCAR: endereço, horários e WhatsApp -->
+  <div class="cols rv">
+    <div><b>Endereço</b>Rua Exemplo, 123<br>Fortaleza, CE</div>
+    <div><b>Horário</b>Segunda a sexta, 8h às 18h<br>Sábado, 8h às 13h</div>
+    <div><b>Contato</b>WhatsApp (85) 90000-0000<br><a href="https://www.instagram.com/cka_motos/" target="_blank" rel="noopener">@cka_motos</a></div>
+  </div>
+</div></section>
+</main>
+<footer><div class="wrap">© <span id="y"></span> CKA Motos. Todos os direitos reservados.</div></footer>
+
+<script>
+(function(){
+  var s='',i,a;for(i=0;i<16;i++){a=i*Math.PI/8;s+='<line x1="'+(200+Math.cos(a)*50).toFixed(1)+'" y1="'+(200+Math.sin(a)*50).toFixed(1)+'" x2="'+(200+Math.cos(a)*146).toFixed(1)+'" y2="'+(200+Math.sin(a)*146).toFixed(1)+'"/>'}
+  document.getElementById('sp').innerHTML=s;
+  document.getElementById('y').textContent=new Date().getFullYear();
+  var els=document.querySelectorAll('.rv'),io=null;
+  function start(){document.getElementById('ld').classList.add('out');document.querySelectorAll('.hero .rv').forEach(function(e,k){setTimeout(function(){e.classList.add('in')},500+k*140)})}
+  setTimeout(start,1900);
+  if('IntersectionObserver' in window){io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.15});
+    els.forEach(function(el){if(!el.closest('.hero'))io.observe(el)})}else{els.forEach(function(el){el.classList.add('in')})}
+  var pin=document.getElementById('servicos'),tr=document.getElementById('track'),g=document.getElementById('giant'),gt=document.getElementById('gt'),tk=false;
+  function clamp(v){return Math.max(0,Math.min(1,v))}
+  function upd(){tk=false;var h=innerHeight,r=pin.getBoundingClientRect(),p=clamp(-r.top/(r.height-h));
+    tr.style.transform='translate3d('+(-p*Math.max(0,tr.scrollWidth-innerWidth))+'px,0,0)';
+    var q=g.getBoundingClientRect(),k=clamp(-q.top/(q.height-h));
+    gt.style.transform='scale('+(0.7+k*0.65).toFixed(3)+')';gt.style.opacity=(k<.12?k/.12:(k>.88?(1-k)/.12:1)).toFixed(2)}
+  addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);upd();
+})();
+</script>
+</body>
+</html>
